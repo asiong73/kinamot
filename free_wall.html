@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Wall</title>
+    <!-- Link to Google Fonts (if you are using them) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Link to your new external stylesheet -->
+    <link rel="stylesheet" href="free_wall_style.css">
+
+    <!-- Link to main stylesheet for any globally shared post card styles or variables (optional) -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+<div class="fw-container">
+<main>
+    <header class="fw-header">
+        <h1>Kinamot Free Wall</h1>
+        <p>Share your dining experiences, photos, and videos!</p>
+        <div class="header-links">
+            <a href="index.html" class="back-link">&laquo; Back to Kinamot Restaurant</a>
+            <a href="userhome.html" class="nav-button">Go to My Home</a>
+        </div>
+    </header>
+
+    <section class="upload-section">
+        <h2>Upload Your Experience</h2>
+        <form id="uploadForm">
+            <div class="form-group">
+                <label for="fileInput">Choose Photo/Video:</label>
+                <input type="file" id="fileInput" name="fileInput" accept="image/*,video/*" required>
+            </div>
+            <div class="form-group">
+                <label for="captionInput">Caption (optional):</label>
+                <textarea id="captionInput" name="captionInput" placeholder="Tell us about your moment..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="privacyInput">Privacy:</label>
+                <select id="privacyInput" name="privacyInput">
+                    <option value="public">Public (Visible to all registered users)</option>
+                    <option value="private">Private (Only you can see this)</option>
+                </select>
+            </div>
+            <button type="submit" class="upload-btn">Upload Post</button>
+        </form>
+    </section>
+
+    <section class="posts-area" id="postsContainer">
+        <div class="post-tabs">
+            <button id="showPublicPostsBtn" class="active">Public Wall</button>
+            <button id="showPrivatePostsBtn">My Private Posts</button>
+        </div>
+        <div id="publicPostsContainer" class="posts-grid">
+            <!-- Public posts will be loaded here by JavaScript -->
+            <div class="no-posts-message" id="publicNoPostsMsg" style="display: none;">No public posts yet. Be the first to share!</div>
+        </div>
+        <div id="privatePostsContainer" class="posts-grid" style="display: none;">
+            <!-- Private posts will be loaded here by JavaScript -->
+            <div class="no-posts-message" id="privateNoPostsMsg" style="display: none;">You have no private posts yet.</div>
+        </div>
+    </section>
+</main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uploadForm = document.getElementById('uploadForm');
+        const publicPostsContainer = document.getElementById('publicPostsContainer');
+        const privatePostsContainer = document.getElementById('privatePostsContainer');
+        const publicNoPostsMsg = document.getElementById('publicNoPostsMsg');
+        const privateNoPostsMsg = document.getElementById('privateNoPostsMsg');
+        const showPublicPostsBtn = document.getElementById('showPublicPostsBtn');
+        const showPrivatePostsBtn = document.getElementById('showPrivatePostsBtn');
+
+        // Simulated user ID - replace with actual user identification
+        const currentUserId = 'user123';
+
+        // Function to create a post element
+        function createPostElement(post) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post-card';
+
+            let mediaElement;
+            if (post.fileUrl && post.fileUrl.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+                mediaElement = document.createElement('img');
+                mediaElement.src = post.fileUrl;
+                mediaElement.alt = post.caption || 'User upload';
+            } else if (post.fileUrl && post.fileUrl.match(/\.(mp4|webm|ogg)$/) != null) {
+                mediaElement = document.createElement('video');
+                mediaElement.src = post.fileUrl;
+                mediaElement.controls = true;
+            } else {
+                mediaElement = document.createElement('p');
+                mediaElement.className = 'media-fallback-text'; // Added class for styling
+                mediaElement.textContent = 'Media not available or unsupported format.';
+            }
+            postDiv.appendChild(mediaElement);
+
+            if (post.caption) {
+                const captionP = document.createElement('p');
+                captionP.className = 'caption';
+                captionP.textContent = post.caption;
+                postDiv.appendChild(captionP);
+            }
+
+            const uploaderInfo = document.createElement('p');
+            uploaderInfo.className = 'uploader-info';
+            uploaderInfo.textContent = `Uploaded by: ${post.userId === currentUserId ? "You" : "User " + post.userId.substring(0,5)}`;
+            postDiv.appendChild(uploaderInfo);
+
+            const privacyInfo = document.createElement('p');
+            privacyInfo.className = 'privacy-info';
+            privacyInfo.textContent = `Privacy: ${post.privacy}`;
+            postDiv.appendChild(privacyInfo);
+
+            return postDiv;
+        }
+
+        // Function to load posts from localStorage
+        function loadPosts() {
+            const posts = JSON.parse(localStorage.getItem('freeWallPosts')) || [];
+
+            // Clear previous posts but keep the "no posts" messages
+            while (publicPostsContainer.firstChild && publicPostsContainer.firstChild !== publicNoPostsMsg) {
+                publicPostsContainer.removeChild(publicPostsContainer.firstChild);
+            }
+            while (privatePostsContainer.firstChild && privatePostsContainer.firstChild !== privateNoPostsMsg) {
+                privatePostsContainer.removeChild(privatePostsContainer.firstChild);
+            }
+
+            let publicHasPosts = false;
+            let privateHasPosts = false;
+
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                if (post.privacy === 'public') {
+                    publicPostsContainer.insertBefore(postElement, publicNoPostsMsg); // Insert before the message
+                    publicHasPosts = true;
+                } else if (post.privacy === 'private' && post.userId === currentUserId) {
+                    privatePostsContainer.insertBefore(postElement, privateNoPostsMsg); // Insert before the message
+                    privateHasPosts = true;
+                }
+            });
+
+            // Update visibility of "no posts" messages
+            if (showPublicPostsBtn.classList.contains('active')) {
+                publicNoPostsMsg.style.display = publicHasPosts ? 'none' : 'block';
+                privateNoPostsMsg.style.display = 'none';
+            } else { // Private tab is active
+                privateNoPostsMsg.style.display = privateHasPosts ? 'none' : 'block';
+                publicNoPostsMsg.style.display = 'none';
+            }
+        }
+
+        if (uploadForm) {
+            uploadForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const fileInput = document.getElementById('fileInput');
+                const captionInput = document.getElementById('captionInput');
+                const privacyInput = document.getElementById('privacyInput');
+
+                const file = fileInput.files[0];
+                const caption = captionInput.value;
+                const privacy = privacyInput.value;
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const newPost = {
+                            id: Date.now(),
+                            userId: currentUserId,
+                            fileUrl: e.target.result,
+                            caption: caption,
+                            privacy: privacy,
+                            timestamp: new Date().toISOString()
+                        };
+
+                        const posts = JSON.parse(localStorage.getItem('freeWallPosts')) || [];
+                        posts.unshift(newPost);
+                        localStorage.setItem('freeWallPosts', JSON.stringify(posts));
+
+                        loadPosts();
+                        uploadForm.reset();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please select a file to upload.');
+                }
+            });
+        }
+
+        if (showPublicPostsBtn && showPrivatePostsBtn) {
+            showPublicPostsBtn.addEventListener('click', () => {
+                publicPostsContainer.style.display = 'grid';
+                privatePostsContainer.style.display = 'none';
+                showPublicPostsBtn.classList.add('active');
+                showPrivatePostsBtn.classList.remove('active');
+                loadPosts();
+            });
+
+            showPrivatePostsBtn.addEventListener('click', () => {
+                privatePostsContainer.style.display = 'grid';
+                publicPostsContainer.style.display = 'none';
+                showPrivatePostsBtn.classList.add('active');
+                showPublicPostsBtn.classList.remove('active');
+                loadPosts();
+            });
+        }
+
+        loadPosts(); // Initial load of posts (will also update no-posts messages visibility)
+
+    });
+</script>
+</body>
+</html>

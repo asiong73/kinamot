@@ -1,0 +1,137 @@
+/* user_home_style.css */
+
+/* === Header and Navigation Styles === */
+#mainHeader .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust as needed */
+    /* Example: If you have a global header background in style.css, it will apply.
+       If not, add it here:
+       background-color: #f8f8f8;
+       border-bottom: 1px solid #ddd;
+    */
+}
+
+.logo-container .site-title {
+    font-size: 1.5em; /* Adjust as needed */
+    /* color: #333; */ /* Use your global link/text color or define here */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobile Menu Toggle Button (Hamburger) */
+#mobileMenuToggle {
+    display: none; /* Hidden by default, shown in media query */
+    background: transparent; /* Changed from 'none' to 'transparent' for clarity */
+    border: none;
+    cursor: pointer;
+    padding: 10px; /* Or adjust to your preference */
+    z-index: 1001; /* Ensure it's above other elements if nav becomes fixed/absolute */
+}
+
+#mobileMenuToggle span {
+    position: absolute;
+    width: 25px; /* Width of hamburger lines */
+    height: 3px; /* Thickness of hamburger lines */
+    background-color: #333; /* Color of hamburger lines, adjust to your theme */
+    margin: 5px 0; /* Spacing between hamburger lines */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the menu is open (transforms hamburger to X) */
+#mobileMenuToggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+#mobileMenuToggle.open span:nth-child(2) {
+    opacity: 0;
+}
+#mobileMenuToggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navigation Menu Styles */
+#mainNav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Horizontal menu on desktop */
+}
+
+#mainNav li {
+    margin-left: 20px; /* Spacing between menu items on desktop, adjust as needed */
+}
+
+#mainNav a {
+    text-decoration: none;
+    color: #333; /* Use your global link color or define here */
+    padding: 10px;   /* Padding for desktop links */
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Active and hover states for navigation links */
+#mainNav a:hover,
+#mainNav a.active {
+    color: #b08d57; /* Example primary color from your site, adjust as needed */
+    /* background-color: #f0f0f0; */ /* Optional: background for active/hover */
+}
+
+
+/* === Styles for Page Sections (using class-based visibility) === */
+/* This assumes you want this behavior for all .uh-page-section elements.
+   If not, you might have these styles already in your global style.css
+   or might want to scope them more specifically. */
+.uh-page-section {
+    display: none; /* Hide all sections by default */
+    padding: 20px; /* Example padding, adjust as needed */
+}
+
+.uh-page-section.active-section {
+    display: block; /* Show only the active section */
+}
+
+
+/* === Mobile Menu Media Query === */
+@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+
+    #mobileMenuToggle {
+        display: block; /* Show the hamburger button on mobile */
+    }
+
+    #mainNav {
+        display: none; /* Hide the nav by default on mobile */
+        position: absolute;
+        top: 60px; /* Adjust based on your header's height; ensure it clears the header */
+        left: 0;
+        right: 0;
+        background-color: #fff; /* Background for mobile menu dropdown */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds a slight shadow */
+        z-index: 1000; /* Ensure it's above page content but below the toggle if toggle has higher z-index */
+        border-top: 1px solid #eee; /* Optional: a separator line */
+    }
+
+    #mainNav.active {
+        display: block; /* Show the nav when .active class is added by JS */
+    }
+
+    #mainNav ul {
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%;
+    }
+
+    #mainNav li {
+        margin-left: 0; /* Remove left margin for stacked items */
+        width: 100%;
+        text-align: center; /* Or 'left' or 'right' as you prefer */
+    }
+
+    #mainNav a {
+        padding: 15px 20px; /* Larger touch targets for mobile links */
+        border-bottom: 1px solid #f0f0f0; /* Separator lines between mobile links */
+    }
+
+    #mainNav li:last-child a {
+        border-bottom: none; /* Remove border from the last item */
+    }
+}

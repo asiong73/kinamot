@@ -1,0 +1,260 @@
+/* free_wall_style.css */
+
+/* Styles specifically for the Free Wall page.
+   Assumes that very basic resets (*), global body font,
+   and global color variables might be in a main style.css. */
+
+/* If you added a specific class to the body tag in free_wall.html: */
+/* body.fw-body { */
+    /* Add any body overrides specific to free_wall.html if needed, */
+    /* e.g., slightly different padding if the global body padding isn't suitable. */
+    /* padding: 20px; */ /* Example: if global body has different padding */
+/* } */
+
+.fw-container {
+    max-width: 1000px; /* Specific width for free wall content */
+    margin: 0 auto; /* Common centering, could be global */
+    padding: 20px; /* Specific padding for this container */
+    background-color: #fff; /* Could be a global card/container background */
+    border-radius: 8px; /* Could be a global border-radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Could be a global shadow style */
+}
+
+/* Header Styles for Free Wall */
+.fw-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.fw-header h1 {
+    color: #b08d57; /* Or var(--fw-primary-color) if using page-specific vars */
+    font-family: 'Cormorant Garamond', serif; /* Assuming this font is for fw-header */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.fw-header p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #555; /* Or var(--fw-text-muted) */
+}
+
+.fw-header .header-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.fw-header .nav-button,
+.fw-header .back-link {
+    color: #b08d57;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px; /* Or var(--fw-border-radius) */
+    border: 1px solid #b08d57;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.fw-header .nav-button:hover,
+.fw-header .back-link:hover {
+    background-color: #b08d57;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Upload Form Styles for Free Wall */
+.upload-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Specific background for this section */
+    border-radius: 8px; /* Or var(--fw-border-radius) */
+}
+
+.upload-section h2 {
+    color: #2c2c2c; /* Or var(--fw-secondary-color) */
+    margin-bottom: 15px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.form-group { /* This might be a global form style pattern */
+    margin-bottom: 15px;
+}
+
+.form-group label { /* This might be a global form style pattern */
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input[type="file"],
+.form-group textarea,
+.form-group select { /* This might be a global form style pattern */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif; /* Fallback, ensure fonts are linked */
+}
+
+.form-group textarea { /* Specific to textareas within this form context */
+    resize: vertical;
+    min-height: 80px;
+}
+
+.upload-btn { /* Specific button for the upload action */
+    background-color: #b08d57;
+    color: #f8f8f8;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #d4af37;
+}
+
+/* Posts Area Styles for Free Wall */
+.posts-area {
+    /* Styles for the main container of all posts, if any */
+}
+
+.posts-area h2 { /* Specific to the H2 within posts-area on free_wall.html */
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c2c2c;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.post-tabs {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-tabs button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid #b08d57;
+    background-color: transparent;
+    color: #b08d57;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.post-tabs button.active,
+.post-tabs button:hover {
+    background-color: #b08d57;
+    color: #fff;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.no-posts-message {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+    grid-column: 1 / -1; /* Make it span all columns if grid is empty */
+}
+
+/* Individual Post Card styles for Free Wall context.
+   If .post-card has global base styles in style.css,
+   these should be overrides or additions specific to free_wall.html. */
+.post-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card img,
+.post-card video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.post-card .caption,
+.post-card .uploader-info,
+.post-card .privacy-info {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: #333;
+}
+.post-card .caption {
+    font-weight: 500;
+}
+.post-card .uploader-info {
+    font-size: 0.8rem;
+    color: #666;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+    margin-top: auto;
+}
+.post-card .privacy-info {
+    font-size: 0.75rem;
+    color: #888;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Responsive adjustments for free_wall.html elements */
+@media (max-width: 768px) {
+    /* If body.fw-body padding needs to be different: */
+    /* body.fw-body { padding: 10px; } */
+
+    .fw-container {
+        padding: 15px;
+    }
+    .fw-header h1 {
+        font-size: 2rem;
+    }
+    .fw-header .header-links {
+        gap: 10px;
+    }
+    .fw-header .nav-button,
+    .fw-header .back-link {
+        padding: 7px 12px;
+        font-size: 0.9rem;
+    }
+    .posts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fw-header h1 {
+        font-size: 1.8rem;
+    }
+     .fw-header p {
+        font-size: 0.9rem;
+    }
+    .upload-section {
+        padding: 15px;
+    }
+    .posts-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .post-tabs button {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        margin: 0 3px;
+    }
+}

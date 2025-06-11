@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kinamot Filipino Restaurant - Authentic Flavors</title>
+        <meta name="description" content="Experience authentic Filipino cuisine at Kinamot Restaurant. Savor traditional dishes, handcrafted with passion. View our menu, learn our story, and get in touch.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/favicon.png" type="image/png">
+    </head>
+    <body>
+        <header id="mainHeader">
+            <div class="container">
+                <a href="#hero" id="logoLinkText">Kinamot</a>
+                <button id="openAiChefModalHeaderBtn" class="header-chef-btn">Chat with Chef Kin
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li>
+                            <a href="#hero" class="active">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#menu">Menu</a>
+                        </li>
+                        <li>
+                            <a href="#videos">Videos</a>
+                        </li>
+                        <li>
+                            <a href="#guestChat">Guest Chat</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false"
+                    aria-controls="mainNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero">
+                <div class="hero-overlay"></div>
+                <img src="images/mainlogo.jpg" alt="Kinamot Restaurant Logo" id="heroOverlappingLogo">
+                <div class="hero-content container">
+                    <h1>Experience Authentic Filipino Flavors at Kinamot</h1>
+                    <p>Savor the taste of tradition, crafted with passion and served with a smile.
+                        Join us for an unforgettable dining experience.
+                    </p>
+                    <a href="#menu" class="cta-button">View Our Menu</a>
+                </div>
+            </section>
+
+            <!-- About Us Section -->
+            <section id="about" class="content-section">
+                <div class="container">
+                    <h2>Discover Our Story</h2>
+                    <p class="section-subtitle">More than just a restaurant, we are a family
+                        passionate about sharing the rich culinary heritage of the Philippines.
+                    </p>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Welcome to Kinamot</h3>
+                            <p>Kinamot, meaning "by hand" in Visayan, reflects our commitment to
+                                handcrafted dishes made from the freshest local ingredients. Our
+                                journey began with a simple dream: to bring the authentic tastes of
+                                home to our community.
+                            </p>
+                            <p>From traditional family recipes passed down through generations to
+                                innovative culinary creations, every dish at Kinamot tells a story.
+                                We believe in food that not only nourishes the body but also warms
+                                the soul.
+                            </p>
+                            <a href="#contact" class="cta-button-outline">Meet the Chef</a>
+                            {/* Updated href */}
+                        </div>
+                        <div class="about-image">
+                            <img src="images/ven4.jpg" alt="Interior of Kinamot Restaurant">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu Highlights Section -->
+            <section id="menu" class="content-section bg-light-gold">
+                <div class="container">
+                    <h2>Menu Highlights</h2>
+                    <p class="section-subtitle">A selection of our most loved dishes, prepared with
+                        passion.
+                    </p>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="images/menu_b2.jpg" alt="Tuna Panga">
+                            <h3>Classic Tuna Panga</h3>
+                            <p>Tender Tuna Panga in soy sauce, vinegar,and garlic.</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="images/menu_b3.jpg" alt="Fish Kinilaw">
+                            <h3>Fish Kinilaw</h3>
+                            <p>A classic spicy fish kinilaw.</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="images/filet%20mignon%20steak.jpg" alt="Filet Mignon Steak">
+                            <h3>Crispy Fish Filet</h3>
+                            <p>Deep-fried pork belly served with a rich liver sauce.</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="images/menu_halo_halo.jpg" alt="Halo-Halo Dessert">
+                            <h3>Refreshing Halo-Halo</h3>
+                            <p>A popular Filipino dessert with shaved ice, sweet beans, fruits, and
+                                leche flan.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="margin-top: 30px;">
+                        <a href="full_menu.html" class="cta-button">View Full Menu</a>
+                        {/* Updated href */}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Section (remains unchanged as per your previous requests) -->
+            <section id="videos" class="content-section">
+                <div class="container">
+                    <h2>Our Videos</h2>
+                    <p class="section-subtitle">Watch our chefs in action and see what makes us
+                        special.
+                    </p>
+                    <div class="video-grid">
+                        <div class="video-item">
+                            <div class="video-embed-container">
+                                <video controls width="100%" preload="metadata">
+                                    <source src="videos/chef1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <h3>Restaurant Ambiance Tour</h3>
+                            <p>Take a virtual walk through Kinamot and experience our inviting
+                                atmosphere.
+                            </p>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-embed-container">
+                                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_2"
+                                    title="YouTube video player 2 - Chef Kinamot Preparing a Signature Dish"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <h3>Chef Preparing Signature Dish</h3>
+                            <p>Watch our head chef craft one of our most popular traditional
+                                dishes.
+                            </p>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-embed-container">
+                                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_3"
+                                    title="YouTube video player 3 - Customer Testimonials for Kinamot"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <h3>Customer Testimonials</h3>
+                            <p>Hear what our happy customers have to say about their Kinamot
+                                experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guest Chat / Authentication Section -->
+            <section id="guestChat" class="content-section bg-dark">
+                <div class="container">
+                    <h2 id="guestChatHeading">Join the Conversation</h2>
+                    <p class="section-subtitle" id="guestChatSubtitle">Sign in or register to chat
+                        with us and other guests!
+                    </p>
+                    <div id="authAndChatArea">
+                        <div id="authPrompt">
+                            <p>You need to be logged in to use the chat and ask Chef Kin.</p>
+                            <button class="cta-button" id="loginPromptBtn">Login</button>
+                            <button class="cta-button-outline" id="registerPromptBtn">Register
+                            </button>
+                        </div>
+                        <form id="loginForm" class="auth-form" style="display: none;">
+                            <h3>Login to Your Account</h3>
+                            <div class="form-group-column">
+                                <label for="loginEmail" class="sr-only">Email</label>
+                                <input type="email" id="loginEmail" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="form-group-column">
+                                <label for="loginPassword" class="sr-only">Password</label>
+                                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="cta-button">Login</button>
+                            <p class="form-switch">Don't have an account?
+                                <a href="#" id="switchToRegister">Register here</a>
+                            </p>
+                        </form>
+                        <form id="registerForm" class="auth-form" style="display: none;">
+                            <h3>Create New Account</h3>
+                            <div class="form-group-column">
+                                <label for="registerUsername" class="sr-only">Username</label>
+                                <input type="text" id="registerUsername" placeholder="Choose a username" required>
+                            </div>
+                            <div class="form-group-column">
+                                <label for="registerEmail" class="sr-only">Email</label>
+                                <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group-column">
+                                <label for="registerPassword" class="sr-only">Password</label>
+                                <input type="password" id="registerPassword" placeholder="Create a password" required>
+                            </div>
+                            <button type="submit" class="cta-button">Register</button>
+                            <p class="form-switch">Already have an account?
+                                <a href="#" id="switchToLogin">Login here</a>
+                            </p>
+                        </form>
+                        <div id="chatInterface" style="display:none;">
+                            <h3 id="chatInterfaceHeading">Live Guest Chat</h3>
+                            <div id="chatOutput" role="log" aria-live="polite">
+                                <p>
+                                    <em>Welcome to the chat! (This is a demo interface)</em>
+                                </p>
+                            </div>
+                            <div id="chatInputArea">
+                                <label for="chatMessageInput" class="sr-only">Your message</label>
+                                <input type="text" id="chatMessageInput" placeholder="Type your message...">
+                                <button id="sendMessageButton" class="cta-button">Send</button>
+                            </div>
+                            <button id="logoutButton" class="cta-button-outline" style="margin-top: 15px; display: none;">Logout
+                            </button>
+                            {/* Initially hidden */}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <div class="container">
+                    <h2>Get In Touch</h2>
+                    <p class="section-subtitle">We'd love to hear from you. For reservations,
+                        inquiries, or feedback.
+                    </p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name"
+                                required>
+                            <label for="email" class="sr-only">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email"
+                                required>
+                        </div>
+                        <div class="form-group-column">
+                            <label for="subject" class="sr-only">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject"
+                                required>
+                        </div>
+                        <div class="form-group-column">
+                            <label for="message" class="sr-only">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer id="mainFooter">
+            <div class="container">
+                <p>&copy;
+                    <span id="currentYear"></span> Kinamot Restaurant. All Rights Reserved. Crafted
+                    with passion.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Visit our Facebook page" title="Facebook">
+                        <img src="images/icon_facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#" aria-label="Visit our Instagram profile" title="Instagram">
+                        <img src="images/icon_instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" aria-label="Visit our Twitter profile" title="Twitter">
+                        <img src="images/icon_twitter.png" alt="Twitter">
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <div id="aiChefModal" class="ai-chef-modal" role="dialog" aria-modal="true" aria-labelledby="aiChefModalTitle" style="display: none;">
+            <div class="ai-chef-modal-content">
+                <button id="closeAiChefModalBtn" class="ai-chef-close-btn" aria-label="Close Chef Kin chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        width="24" height="24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        <path d="M0 0h24v24H0z" fill="none" />
+                    </svg>
+                </button>
+                <div class="ai-chef-header">
+                    <img src="images/chef_kin_avatar.png" alt="Chef Kin Avatar" id="aiChefImage">
+                    <h3 id="aiChefModalTitle">Chat with Chef Kin</h3>
+                </div>
+                <div id="aiChefChatbox" class="ai-chef-chatbox" role="log" aria-live="polite">
+                    <!-- Messages will be appended here by JavaScript -->
+                </div>
+                <form id="aiChefInputForm" class="ai-chef-input-area">
+                    <label for="aiChefUserInput" class="sr-only">Your message to Chef Kin</label>
+                    <textarea id="aiChefUserInput" placeholder="Ask Chef Kin about Filipino food..."
+                        rows="1"></textarea>
+                    <button type="submit" class="ai-chef-send-btn" aria-label="Send message to Chef Kin">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

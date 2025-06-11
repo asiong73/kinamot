@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinamot Community</title>
+    <!-- Re-using fonts from index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Link to your main style.css FIRST -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to page-specific styles SECOND -->
+    <link rel="stylesheet" href="user_home_style.css">
+
+</head>
+<body>
+<header id="mainHeader">
+    <div class="container">
+        <div class="logo-container">
+            <a href="user_home.html" class="site-title">Kinamot Community</a>
+        </div>
+
+        <nav id="mainNav" aria-label="Main navigation">
+            <ul>
+                <li><a href="user_home.html" class="active" onclick="showSection('publicFeedSection'); return false;">Home</a></li>
+                <li><a href="#messages" onclick="showSection('privateMessagesSection'); return false;">Messages</a></li>
+                <li><a href="#profile" onclick="showSection('userProfileSection'); return false;">My Profile</a></li>
+                <li><a href="index.html">Restaurant Home</a></li>
+                <li><a href="#" id="authLinkTosloka">Login</a></li>
+            </ul>
+        </nav>
+        <button id="mobileMenuToggle" aria-label="Toggle Menu"  aria-expanded="false" aria-controls="mainNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <!-- User Profile Section (STRUCTURE UNCHANGED) -->
+    <section id="userProfileSection" class="uh-page-section">
+        <h2>My Profile</h2>
+        <div class="profile-content">
+            <div class="profile-pic-area">
+                <img id="profileImage" src="placeholder_avatar.png" alt="Profile Picture" class="profile-pic">
+                <div id="avatarSelection" style="display:none;">
+                    <p>Your profile is private. Choose a Star Wars Avatar:</p>
+                    <img src="https://via.placeholder.com/50/FF0000/FFFFFF?Text=Vader" alt="Star Wars Avatar 1" class="avatar-option" onclick="selectAvatar('https://via.placeholder.com/150/FF0000/FFFFFF?Text=Vader')">
+                    <img src="https://via.placeholder.com/50/00FF00/FFFFFF?Text=Yoda" alt="Star Wars Avatar 2" class="avatar-option" onclick="selectAvatar('https://via.placeholder.com/150/00FF00/FFFFFF?Text=Yoda')">
+                    <p class="star-wars-avatar-note">More avatars available...</p>
+                </div>
+                <button onclick="document.getElementById('profilePicUpload').click()" class="cta-button-outline" style="margin-top:10px;">Change Picture</button>
+                <input type="file" id="profilePicUpload" style="display:none;" accept="image/*">
+            </div>
+            <div class="profile-details-form">
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="CurrentUser" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" name="bio" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileVisibility">Profile Visibility:</label>
+                        <select id="profileVisibility" name="profileVisibility" onchange="toggleAvatarDisplay(this.value)">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button">Save Profile</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Public Photo Feed Section (STRUCTURE UNCHANGED) -->
+    <section id="publicFeedSection" class="uh-page-section active-section">
+        <h2>Public Feed</h2>
+        <p>See what others are sharing from Kinamot!</p>
+        <div class="photo-grid" id="photoFeedContainer">
+            <div class="photo-item">
+                <img src="menu_b2.jpg" alt="User shared photo">
+                <div class="photo-info">
+                    <p class="photo-caption">Enjoying the Tuna Panga at Kinamot! #KinamotExperience @</p>
+                </div>
+                <div class="photo-actions">
+                    <button class="like-btn" aria-label="Like post">❤️ Like (15)</button>
+                    <button class="comment-btn" aria-label="Comment on post" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">💬 Comment (3)</button>
+                    <div class="comments-section" style="display:none;">
+                        <h4>Comments:</h4>
+                        <div class="comment"><strong>UserABC:</strong> Looks delicious!</div>
+                        <textarea placeholder="Write a comment..." aria-label="Write a comment"></textarea>
+                        <button class="cta-button-outline">Post Comment</button>
+                    </div>
+                    <button class="share-btn" aria-label="Share post">🔗 Share</button>
+                    <button class="download-btn" aria-label="Download photo">💾 Download</button>
+                </div>
+            </div>
+            <p id="noPublicPhotosMsg" style="display:none; text-align:center; grid-column: 1 / -1;">No public photos yet. Be the first to share!</p>
+        </div>
+    </section>
+
+    <!-- Private Messages Section (STRUCTURE UNCHANGED) -->
+    <section id="privateMessagesSection" class="uh-page-section">
+        <h2>Private Messages</h2>
+        <div class="messaging-interface">
+            <div class="conversations-list">
+                <h4>Conversations</h4>
+                <ul>
+                    <li onclick="loadConversation('UserXYZ')">Chat with UserXYZ</li>
+                    <li onclick="loadConversation('ChefKinBot')">Chat with ChefKinBot</li>
+                </ul>
+            </div>
+            <div class="chat-window">
+                <div class="chat-header">Chat with <span id="currentChatPartner">...</span></div>
+                <div class="message-area" id="messageArea">
+                    <p><em>Select a conversation to start chatting. This is a placeholder.</em></p>
+                </div>
+                <div class="message-input-area">
+                    <textarea id="privateMessageInput" placeholder="Type your message..."></textarea>
+                    <button id="sendPrivateMessageBtn" class="cta-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="mainFooter">
+    <!-- STRUCTURE UNCHANGED -->
+    <div class="container">
+        <p>&copy; <span id="currentYear"></span> Kinamot Restaurant & Community. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // --- START: Mobile Menu Toggle Functionality ---
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+    }
+    // --- END: Mobile Menu Toggle Functionality ---
+
+    function showSection(sectionIdToShow) {
+        document.querySelectorAll('.uh-page-section').forEach(section => {
+            section.classList.remove('active-section');
+        });
+        const activeSection = document.getElementById(sectionIdToShow);
+        if (activeSection) {
+            activeSection.classList.add('active-section');
+        }
+
+        // If mobile menu is open, close it when a section is selected
+        if (mainNav && mainNav.classList.contains('active')) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('open');
+        }
+    }
+
+    function toggleAvatarDisplay(visibility) {
+        const avatarDiv = document.getElementById('avatarSelection');
+        const profileImg = document.getElementById('profileImage');
+        if (visibility === 'private') {
+            avatarDiv.style.display = 'block';
+            profileImg.src = 'https://via.placeholder.com/150/808080/FFFFFF?Text=Private';
+        } else {
+            avatarDiv.style.display = 'none';
+            profileImg.src = 'placeholder_avatar.png';
+        }
+    }
+
+    function selectAvatar(avatarSrc) {
+        document.getElementById('profileImage').src = avatarSrc;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const defaultSection = 'publicFeedSection';
+        document.querySelectorAll('.uh-page-section').forEach(section => {
+            if (section.id === defaultSection) {
+                section.classList.add('active-section');
+            } else {
+                section.classList.remove('active-section');
+            }
+        });
+
+        const isLoggedIn = false;
+        const authLink = document.getElementById('authLinkTosloka');
+        if (isLoggedIn) {
+            authLink.textContent = 'Logout';
+            authLink.href = '#logout';
+        } else {
+            authLink.textContent = 'Login/Register';
+            authLink.href = 'index.html#guestChat';
+        }
+    });
+
+    function loadConversation(userName) {
+        document.getElementById('currentChatPartner').textContent = userName;
+        document.getElementById('messageArea').innerHTML = `<p><em>Chat history with ${userName} would load here.</em></p>`;
+    }
+</script>
+</body>
+</html>
