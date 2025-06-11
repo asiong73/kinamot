@@ -1,0 +1,269 @@
+/* Global Resets & Font Imports */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.fw-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Header Styles */
+.fw-header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.fw-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.fw-header p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.header-links a {
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+.back-link {
+    background-color: #3498db;
+    color: white;
+}
+
+.back-link:hover {
+    background-color: #2980b9;
+}
+
+.nav-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.nav-button:hover {
+    background-color: #27ae60;
+}
+
+/* Upload Section Styles */
+.upload-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.upload-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input[type="file"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important for 100% width */
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.upload-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #d35400;
+}
+
+/* Posts Area Styles */
+.posts-area {
+    padding: 20px;
+}
+
+.post-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-tabs button {
+    padding: 10px 20px;
+    margin: 0 5px -1px 5px; /* Negative margin to overlap border */
+    border: 1px solid transparent;
+    border-bottom: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    color: #555;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.post-tabs button.active {
+    color: #e67e22;
+    border-color: #ddd;
+    border-bottom: 1px solid #fff; /* To make it look like tab is part of content */
+    font-weight: 700;
+}
+
+.post-tabs button:hover:not(.active) {
+    color: #333;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* To contain image corners */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card img,
+.post-card video {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Limit media height */
+    object-fit: cover; /* Ensure media covers the area well */
+    display: block;
+}
+
+.post-card .media-fallback-text { /* Style for the fallback text */
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    background-color: #f0f0f0;
+    min-height: 100px; /* Give it some body */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-card .caption,
+.post-card .uploader-info,
+.post-card .privacy-info {
+    padding: 5px 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.post-card .caption {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0.95em;
+    color: #333;
+    border-top: 1px solid #eee;
+    margin-top: auto; /* Pushes caption and below to bottom if media is short */
+}
+.post-card .uploader-info {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #777;
+}
+.post-card .privacy-info {
+    font-size: 0.8em;
+    color: #777;
+    padding-bottom: 10px;
+}
+
+
+.no-posts-message {
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: #777;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px dashed #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fw-header h1 {
+        font-size: 2.2em;
+    }
+    .posts-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .header-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header-links a {
+        margin: 5px 0;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .fw-header h1 {
+        font-size: 1.8em;
+    }
+    .fw-header p {
+        font-size: 1em;
+    }
+    .post-tabs button {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+}

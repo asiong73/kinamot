@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "fabioz.vscode-pydev-python-debugger",
+        "343max.android-emulator-launcher",
+        "toroxx.vscode-avdmanager",
+        "oognuyh.android-emulator-helper",
+        "dannark.androidlauncher",
+        "diemasmichiels.emulate",
+        "adelphes.android-dev-ext",
+        "mpotthoff.vscode-android-webview-debug",
+        "ritwickdey.liveserver",
+        "yandeu.five-server"
+    ]
+}
